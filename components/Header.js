@@ -16,7 +16,7 @@ import {
     AiOutlineClose,
   } from "react-icons/ai";
 import favicon from "../public/favicon.png";
-import AP from "../public/A.png"
+import AP from "../public/favicon.png"
 import Menu from './Menu';
 import onto from '../public/onto.png';
 
