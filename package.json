@@ -31,7 +31,6 @@
     "react-typed": "^1.2.0",
     "sharp": "^0.33.2",
     "swiper": "^11.0.5",
-    "typed": "^10.0.0-beta.2",
     "utils": "^0.2.2"
   },
   "devDependencies": {
