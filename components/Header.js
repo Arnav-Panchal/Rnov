@@ -2,9 +2,7 @@
 import { IconContext } from 'react-icons';
 import React from 'react'
 import {useState} from "react";
-import Typed from 'react-typed'
-// import AOS from "aos";
-// import "aos/dist/aos.css";
+
 
 import Image from "next/image";
 import {
