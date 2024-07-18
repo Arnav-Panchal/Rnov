@@ -81,14 +81,7 @@ export default function Header() {
                     Arnav Panchal
                 </h2>
                 <div className="text-2xl py-10 dark:text-white md:text-3xl">
-                <Typed className='pl-3'
-                    strings={['  Full Stack Web Developer !',
-                    '  Java Spring Developer !',
-                    '  Sports Enthusiast']}
-                    typeSpeed={100}
-                    loop={true}
-                    backSpeed={120}
-                />
+                
             </div>
                 <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
                     Freelancer providing services for programming and design content
