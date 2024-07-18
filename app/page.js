@@ -32,11 +32,6 @@ export default function Home() {
           {/* <Cards/> */}
         </section>
         
-        <section className="py-10">
-          
-          {/* <ProfileStats/> */}
-          <Showcase/>
-        </section>
         <section>
           <ContactForm/>
         </section>
