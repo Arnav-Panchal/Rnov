@@ -17,6 +17,15 @@ import favicon from "../public/favicon.png";
 import AP from "../public/favicon.png"
 import Menu from './Menu';
 import onto from '../public/onto.png';
+import { Oswald } from 'next/font/google';
+import AnimatedResumeButton from './Rbutton';
+// import clsx from 'clsx';
+
+
+const oswald = Oswald ({
+  subsets: ['latin'],
+  weight:['200','700']
+});
 
 export default function Header() {
 
@@ -39,6 +48,7 @@ export default function Header() {
         document.body.classList.toggle('overflow-hidden',isMenuOpen);
       };
 
+
       const customFontStyle = {
         fontFamily: 'Britannic Bold',
     };
@@ -46,6 +56,7 @@ export default function Header() {
       return (
   
     <div >
+      <main className={oswald.className}>
         <section className={`min-h-screen relative border-b border-yourColor pb-4 ${isMenuOpen ? 'fixed' : ''}`}>
         {isMenuOpen && (
           <div className="fixed inset-0 flex justify-center items-center bg-black z-50">
@@ -75,9 +86,10 @@ export default function Header() {
             </div>
             </nav>
             <div className="text-center p-10 py-10" style={customFontStyle}>
-                <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl hover:scale-105 transition-transform duration-300">
-                    Arnav Panchal
-                </h2>
+            <h2 className={`${oswald.className} text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl hover:scale-105 transition-transform duration-300`}>
+            Arnav Panchal
+        </h2>
+               <AnimatedResumeButton/>
                 <div className="text-2xl py-10 dark:text-white md:text-3xl">
                 
             </div>
@@ -109,6 +121,7 @@ export default function Header() {
                 </div>
             </div>
         </section>
+        </main>
         </div>
   )
 }

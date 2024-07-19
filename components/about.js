@@ -128,8 +128,8 @@ const Aboutme = () => {
             <div className='col-span-1 flex items-center'> 
             <Image src={photo} className='rounded-full px-5 py-5' alt="" height={500} width={500}/>
             </div>
-            <div className='col-span-2' style={customFontStyle}>
-                <h2 className='text-6xl py-5 font-bold text-teal-500 md-4'>About me</h2>
+            <div className='col-span-2' >
+            <h1 className="text-6xl text-center font-bold mb-8">About me</h1>
                 <p className='text-4xl py-2 text-base lg:text-lg'>
                     Full Stack Development, I am a skilled Java developer with proficiency in web development 
                     and Data Structures and Algorithms (DSA) in Java. Currently in my third year of a BE IT 
