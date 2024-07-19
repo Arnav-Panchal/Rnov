@@ -22,7 +22,7 @@ function ContactForm() {
   return (
     <section >
       <div>
-        <h1 className="text-center text-5xl py-5  text-teal-500 md-4 " style={customFontStyle}>Contact me</h1>
+      <h1 className="text-6xl mt-20 text-center font-bold mb-8">Contact</h1>
       </div>
     <div className="flex items-center justify-center h-screen">
       <form onSubmit={handleSubmit} className="w-1/2 p-4 border-2 border-gray-300 rounded-lg shadow-md transform hover:scale-125 transition-transform duration-300">

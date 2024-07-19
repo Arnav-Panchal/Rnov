@@ -3,6 +3,7 @@
 
 import Aboutme from "@/components/about";
 import Header from "@/components/Header";
+import Project from "@/components/Projects";
 // import Cards from "@/components/Cards";
 import Folio from "@/components/Folio";
 //import Slider from "@/components/Slider";
@@ -31,7 +32,9 @@ export default function Home() {
           
           {/* <Cards/> */}
         </section>
-        
+        <section>
+          <Project/>
+        </section>
         <section>
           <ContactForm/>
         </section>
