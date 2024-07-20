@@ -36,7 +36,7 @@ export default function Header() {
               {/* Additional text or elements can be added here if needed */}
             </div>
             <p className="text-sm sm:text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
-              Freelancer providing services for programming and design content needs. Join me down below and let's get cracking!
+              Freelancer providing services for programming and design content needs. Join me down below and lets get cracking!
             </p>
             <div className="text-4xl sm:text-5xl flex justify-center gap-4 sm:gap-12 md:gap-16 py-3 text-gray-600 dark:text-gray-400">
               <IconContext.Provider value={{ size: '1.3em' }}>
