@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <div className="bg-fixed-image bg-cover bg-center bg-no-repeat" >
-      <main className=" bg-black px-10 dark:bg-gray-900 md:px-20 lg:px-40" >
+      <main className=" bg-black  dark:bg-gray-900 md:px-20 " >
         <Header />
         <section className="py-20">
           <div>
