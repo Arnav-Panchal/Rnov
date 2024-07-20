@@ -24,7 +24,7 @@ function ContactForm() {
       <div>
       <h1 className="text-6xl mt-20 text-center font-bold mb-8">Contact</h1>
       </div>
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-1/2 mt-20 mb-10">
       <form onSubmit={handleSubmit} className="w-1/2 p-4 border-2 border-gray-300 rounded-lg shadow-md transform hover:scale-125 transition-transform duration-300">
         <label htmlFor="email" className="block text-sm font-medium text-gray-600">
           Email Address
