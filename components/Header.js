@@ -18,7 +18,7 @@ import AP from "../public/favicon.png"
 import Menu from './Menu';
 import onto from '../public/onto.png';
 import { Oswald } from 'next/font/google';
-import AnimatedResumeButton from './Rbutton';
+import AnimatedButton from './Rbutton';
 // import clsx from 'clsx';
 
 
@@ -89,7 +89,7 @@ export default function Header() {
             <h2 className={`${oswald.className} text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl hover:scale-105 transition-transform duration-300`}>
             Arnav Panchal
         </h2>
-               <AnimatedResumeButton/>
+               {/* <AnimatedButton/> */}
                 <div className="text-2xl py-10 dark:text-white md:text-3xl">
                 
             </div>
