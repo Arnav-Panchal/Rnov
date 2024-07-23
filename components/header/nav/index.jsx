@@ -10,7 +10,7 @@ import Curve from './Curve';
 const navItems = [
   {
     title: "Resume",
-    href: "/",
+    href: "https://github.com/Arnav-Panchal/Rnov",
   },
   {
     title: "Work",
