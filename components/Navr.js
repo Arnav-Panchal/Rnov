@@ -49,8 +49,8 @@ export default function Header() {
                 </a>
               </IconContext.Provider>
             </div>
-            <div className='ml-36'>
-            <h2 className={`${anton.className} text-2xl sm:text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-8xl hover:scale-105 transition-transform duration-300`}>
+            <div className='ml-4 md:ml-36 sm:ml-10'>
+            <h2 className={`${anton.className} text-2xl  py-2 text-teal-600 font-medium dark:text-teal-400 md:text-8xl hover:scale-105 transition-transform duration-300`}>
               WEB Developer
             </h2>
             <p className="text-sm sm:text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-6xl mx-auto md:text-xl">
