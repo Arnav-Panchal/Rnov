@@ -53,7 +53,7 @@ export default function Header() {
             <h2 className={`${anton.className} text-2xl  py-2 text-teal-600 font-medium dark:text-teal-400 md:text-8xl hover:scale-105 transition-transform duration-300`}>
               WEB Developer
             </h2>
-            <p className="text-sm sm:text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-6xl mx-auto md:text-xl">
+            <p className="text-sm sm:text-md py-5 leading-8 text-gray-400 dark:text-gray-200 max-w-6xl mx-auto md:text-2xl">
               Freelancer providing services for programming and design content needs. Join me down below and lets get cracking!
             </p>
             </div>
