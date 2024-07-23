@@ -10,7 +10,7 @@ import Curve from './Curve';
 const navItems = [
   {
     title: "Resume",
-    href: "/",
+    href: "https://github.com/Arnav-Panchal/Rnov",
   },
   {
     title: "Work",
@@ -26,7 +26,7 @@ const navItems = [
   },
 ]
 
-export default function index() {
+export default function Index() {
 
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
