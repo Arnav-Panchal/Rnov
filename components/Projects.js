@@ -31,7 +31,7 @@ const ProjectsPage = () => {
       description: 'CampLink - It is a single platform to get all the updates of events, exams, and schedules happening within the campus. It is basically a digital notice board for all campus students.',
       tags: ['Vite','Nodejs','MongoDB', 'TailwindCSS', 'Express'],
       github: 'https://github.com/Arnav-Panchal/Camplink',
-      website: 'https://camplink-dkyr.vercel.app/'
+      website: 'https://camplink.onrender.com/'
     },
     {
       title: 'Portfolio',
