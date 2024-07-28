@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { Oswald } from 'next/font/google';
 import Image from 'next/image';
+import { Analytics } from "@vercel/analytics/react"
 
 // const inter = Inter({ subsets: ['latin'] })
 const oswald = Oswald({
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={oswald.className}>
+        <Analytics/>
         {children}
       </body>
     </html>
