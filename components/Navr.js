@@ -41,7 +41,7 @@ export default function Header() {
                 <a href="https://github.com/Arnav-Panchal" target="_blank" rel="noopener noreferrer">
                   <AiFillGithub />
                 </a>
-                <a href="https://www.instagram.com/_arnav2827/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/rnov_27/" target="_blank" rel="noopener noreferrer">
                   <AiFillInstagram />
                 </a>
                 <a href="https://www.linkedin.com/in/arnav-panchal-39403223a/" target="_blank" rel="noopener noreferrer">
