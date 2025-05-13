@@ -4,6 +4,7 @@ import WebtalkImage from "../public/web4.png";
 import camp from "../public/Camp.png";
 import port from "../public/port.png";
 import Image from 'next/image';
+import devconnect from "../public/devconnect.png";
 import ochi from "../public/Ochi.png";
 import { AiFillGithub } from "react-icons/ai";
 
@@ -24,6 +25,14 @@ const ProjectsPage = () => {
       tags: ['Vite', 'TailwindCSS', 'Vercel'],
       github: 'https://github.com/Arnav-Panchal/Ochi-clone',
       website: 'https://ochi-cclone.vercel.app/'
+    },
+    {
+      title: 'DevConnect',
+      image: devconnect,
+      description: 'DevConnect is a full-stack developer collaboration platform powered by AI and GitHub integration.',
+      tags: ['MERN', 'TailwindCSS', 'Render'],
+      github: 'https://github.com/Arnav-Panchal/Developers-Collab-Platform',
+      website: 'https://developers-collab-platform.onrender.com/'
     },
     {
       title: 'CampLink',
