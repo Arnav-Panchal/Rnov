@@ -11,6 +11,14 @@ import { AiFillGithub } from "react-icons/ai";
 const ProjectsPage = () => {
   const projects = [
     {
+      title: 'DevConnect',
+      image: devconnect,
+      description: 'DevConnect is a full-stack developer collaboration platform powered by AI and GitHub integration.',
+      tags: ['MERN', 'TailwindCSS', 'Render'],
+      github: 'https://github.com/Arnav-Panchal/Developers-Collab-Platform',
+      website: 'https://developers-collab-platform.onrender.com/'
+    },
+    {
       title: 'WEBTalk',
       image: WebtalkImage,
       description: 'One to One video calling application using webRTC.',
@@ -25,14 +33,6 @@ const ProjectsPage = () => {
       tags: ['Vite', 'TailwindCSS', 'Vercel'],
       github: 'https://github.com/Arnav-Panchal/Ochi-clone',
       website: 'https://ochi-cclone.vercel.app/'
-    },
-    {
-      title: 'DevConnect',
-      image: devconnect,
-      description: 'DevConnect is a full-stack developer collaboration platform powered by AI and GitHub integration.',
-      tags: ['MERN', 'TailwindCSS', 'Render'],
-      github: 'https://github.com/Arnav-Panchal/Developers-Collab-Platform',
-      website: 'https://developers-collab-platform.onrender.com/'
     },
     {
       title: 'CampLink',
