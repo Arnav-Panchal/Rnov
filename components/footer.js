@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className=" text-white py-8">
       <div className="container mx-auto flex flex-col items-center">
-        <p className="text-lg">&copy; 2024 Arnav Panchal. All rights reserved.</p>
+        <p className="text-lg">&copy; 2025 Arnav Panchal. All rights reserved.</p>
         <div className="flex mt-4 space-x-4">
           <a className="hover:text-gray-400" href="https://github.com/Arnav-Panchal" target="_blank" rel="noopener noreferrer">
             GitHub
