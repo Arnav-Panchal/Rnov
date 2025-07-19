@@ -15,20 +15,17 @@ const Aboutme = () => {
   };
 
   return (
-    // Modified structure for a terminal-like About Me section
-    <section className="py-20 px-10 bg-black text-green-400 font-mono"> {/* Dark background and green text, monospaced font */}
+    <section className="py-20 px-10 text-green-400 font-mono">
+      <motion.h2
+        className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        About Me
+      </motion.h2>
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white" // Adjusted heading style
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          About Me {/* Changed heading text */}
-        </motion.h2>
-
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg"> {/* Terminal window-like container */}
           <div className="flex items-center mb-4">
             <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
             <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
@@ -45,12 +42,7 @@ const Aboutme = () => {
           >
             <p>{`>`} cat about.txt</p>
             <p className="whitespace-pre-wrap">{`
-Full Stack Development, I am a skilled Java developer with proficiency in web development
-and Data Structures and Algorithms (DSA) in Java. Currently in my third year of a BE IT
-undergraduate program at SKNSITS College, affiliated with SPPU University, I am eager to
-take on the role of a Full Stack Developer. My goal is to leverage my expertise in Data
-Structures and Algorithms, web development, collaboration, and corporate relations to enhance
-branding and contribute effectively to your organization.
+I am a skilled Full Stack Developer with strong proficiency in web development and Data Structures and Algorithms (DSA) using Java. A recent graduate with a Bachelor's degree in Information Technology from SKNSITS College, affiliated with Savitribai Phule Pune University (SPPU), I am eager to contribute as a Full Stack Developer. My goal is to leverage my expertise in full stack development, problem-solving abilities, and collaborative experience to build impactful digital solutions, support branding efforts, and drive innovation within a forward-thinking organization.
             `}</p> {/* Use whitespace-pre-wrap to maintain formatting */}
           </motion.div>
 
@@ -93,7 +85,6 @@ branding and contribute effectively to your organization.
            {/* </motion.div> */}
 
         </div>
-      </div>
     </section>
   );
 };

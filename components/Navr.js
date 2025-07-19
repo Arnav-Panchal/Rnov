@@ -8,45 +8,56 @@ import {
   AiFillGithub,
 } from "react-icons/ai";
 import { motion } from 'framer-motion'; // Import motion
+import Link from 'next/link';
+import { useState } from 'react';
 
 // Removed font imports as we'll rely on the global font
 
 const Header = () => { // Keep the original component name
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    // Modified styling for a terminal-like header
-    <header className="bg-black text-green-400 font-mono py-6 px-10"> {/* Terminal styling and padding */}
-      <div className="container mx-auto flex justify-between items-center"> {/* Flex container for name and icons */}
-        <motion.h2
-          className="text-2xl font-bold text-white" // Adjusted font size and color
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+    <header className="sticky top-0 z-50 bg-black bg-opacity-95 font-mono shadow-md">
+      <div className="max-w-6xl mx-auto flex justify-between items-center py-5 px-8">
+        {/* Logo */}
+        <span className="text-3xl font-extrabold text-white tracking-tight select-none">Arnav<span className="text-green-400">.</span></span>
+        {/* Desktop: Get In Touch button only */}
+        <nav className="hidden md:flex items-center">
+          <a href="#contact">
+            <button className="px-6 py-3 rounded-xl font-semibold bg-green-400 text-black hover:bg-green-500 transition-colors duration-200 shadow-green-400/30 shadow-lg text-lg">
+              Get In Touch
+            </button>
+          </a>
+        </nav>
+        {/* Hamburger for Mobile: shows only the button */}
+        <button
+          className="md:hidden flex flex-col gap-1 items-center justify-center w-12 h-12 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
-          Arnav Panchal {/* Your name */}
-        </motion.h2>
-        <motion.div
-          className="flex space-x-4 text-xl" // Space out icons and adjust size
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <IconContext.Provider value={{ size: '1.2em' }}> {/* Adjust icon size */}
-            <a href="https://twitter.com/ArnavPanchal9" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              <AiFillTwitterCircle />
-            </a>
-            <a href="https://github.com/Arnav-Panchal" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              <AiFillGithub />
-            </a>
-            <a href="https://www.instagram.com/rnov_27/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              <AiFillInstagram />
-            </a>
-            <a href="https://www.linkedin.com/in/arnav-panchal-39403223a/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              <AiFillLinkedin />
-            </a>
-          </IconContext.Provider>
-        </motion.div>
+          <span className={`block w-8 h-1 bg-green-400 rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-8 h-1 bg-green-400 rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-8 h-1 bg-green-400 rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
       </div>
-      {/* Removed the section with title and description */}
+      {/* Mobile Menu: only the button */}
+      <nav
+        className={`fixed top-0 right-0 h-full w-72 bg-black bg-opacity-95 shadow-lg flex flex-col gap-10 p-10 md:hidden z-50 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
+      >
+        <button
+          className="self-end mb-10 text-green-400 text-3xl focus:outline-none"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          &times;
+        </button>
+        <a href="#contact">
+          <button className="mt-6 px-6 py-3 rounded-xl font-semibold bg-green-400 text-black hover:bg-green-500 transition-colors duration-200 shadow-green-400/30 shadow-lg w-full text-lg" onClick={() => setMenuOpen(false)}>
+            Get In Touch
+          </button>
+        </a>
+      </nav>
     </header>
   );
 };

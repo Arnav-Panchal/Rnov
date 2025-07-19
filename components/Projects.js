@@ -52,20 +52,18 @@ const ProjectsPage = () => {
   };
 
   return (
-    // Modified structure for a terminal-like projects section
-    <section className="py-20 px-10 bg-black text-green-400 font-mono"> {/* Dark background and green text, monospaced font */}
+    <section className="py-20 px-10 text-green-400 font-mono">
       <div className="max-w-6xl mx-auto">
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white" // Adjusted heading style
+          className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Projects {/* Changed heading text */}
+          Projects
         </motion.h1>
-
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg"> {/* Terminal window-like container */}
+        <div>
           <div className="flex items-center mb-4">
             <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
             <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
