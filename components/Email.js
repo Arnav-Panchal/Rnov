@@ -9,27 +9,25 @@ function ContactForm() {
 
   if (state.succeeded) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black text-green-400 font-mono"> {/* Apply terminal styling */}
+      <div className="flex items-center justify-center h-screen bg-black text-green-400 VT323"> {/* Apply terminal styling */}
         <p className="text-4xl font-bold">Message Sent Successfully!</p> {/* Updated success message */}
       </div>
     );
   }
 
   return (
-    // Modified structure for a terminal-like Contact section
-    <section className="py-20 px-10 bg-black text-green-400 font-mono"> {/* Dark background and green text, monospaced font */}
-      <div className="max-w-2xl mx-auto"> {/* Center the form and limit its max width */}
+    <section id="contact" className="py-20 px-10 text-green-400 VT323">
+      <div className="max-w-2xl mx-auto">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white" // Adjusted heading style
+          className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Contact Me {/* Changed heading text */}
+          Contact Me
         </motion.h2>
-
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg"> {/* Terminal window-like container */}
+        <div>
           <div className="flex items-center mb-4">
             <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
             <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
