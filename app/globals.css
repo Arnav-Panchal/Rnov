@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 :root {
   /* Light mode colors */
@@ -29,19 +30,28 @@
 }
 
 body {
-  /* Use a modern sans-serif font, like 'Inter' or 'Roboto' */
-  font-family: 'Inter', sans-serif; /* Example font family */
+  font-family: 'VT323', monospace;
   line-height: 1.6;
   color: var(--text-color-primary);
-  background-color: var(--background-color-light);
-  /* Smooth scrolling for better user experience */
+  background: #000 !important;
+  min-height: 100vh;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.parallax-section {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  margin: 0 !important;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
     color: var(--text-color-primary);
-    background-color: var(--background-color-dark);
+    background: linear-gradient(135deg, #18181a 0%, #232526 100%) fixed;
   }
 }
 
@@ -96,7 +106,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Add some basic responsive padding to sections */
 section {
-  padding: 4rem 1rem; /* Default padding */
+  padding: 4rem 1rem;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  margin: 0 !important;
 }
 
 @media (min-width: 640px) {
