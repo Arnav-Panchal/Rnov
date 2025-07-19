@@ -1,18 +1,15 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react'; // Import useState
 import Link from 'next/link';
-import WebtalkImage from "../public/web4.png";
-import camp from "../public/Camp.png";
-import port from "../public/port.png";
-import Image from 'next/image';
-import devconnect from "../public/devconnect.png";
-import ochi from "../public/Ochi.png";
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai"; // Keep GitHub icon if desired
+import { motion, AnimatePresence } from 'framer-motion'; // Import motion and AnimatePresence
 
 const ProjectsPage = () => {
   const projects = [
     {
       title: 'DevConnect',
-      image: devconnect,
+      // We'll keep the image, description, tags, github, and website data
+      // but display them differently
       description: 'DevConnect is a full-stack developer collaboration platform powered by AI and GitHub integration.',
       tags: ['MERN', 'TailwindCSS', 'Render'],
       github: 'https://github.com/Arnav-Panchal/Developers-Collab-Platform',
@@ -20,7 +17,6 @@ const ProjectsPage = () => {
     },
     {
       title: 'WEBTalk',
-      image: WebtalkImage,
       description: 'One to One video calling application using webRTC.',
       tags: ['React', 'JavaScript', 'UI'],
       github: 'https://github.com/example/project1',
@@ -28,7 +24,6 @@ const ProjectsPage = () => {
     },
     {
       title: 'Ochi Clone',
-      image: ochi,
       description: 'Ochi is a WordPress build originally which I have cloned in React.',
       tags: ['Vite', 'TailwindCSS', 'Vercel'],
       github: 'https://github.com/Arnav-Panchal/Ochi-clone',
@@ -36,7 +31,6 @@ const ProjectsPage = () => {
     },
     {
       title: 'CampLink',
-      image: camp,
       description: 'CampLink - It is a single platform to get all the updates of events, exams, and schedules happening within the campus. It is basically a digital notice board for all campus students.',
       tags: ['Vite','Nodejs','MongoDB', 'TailwindCSS', 'Express'],
       github: 'https://github.com/Arnav-Panchal/Camplink',
@@ -44,7 +38,6 @@ const ProjectsPage = () => {
     },
     {
       title: 'Portfolio',
-      image: port,
       description: 'Portfolio Website',
       tags: ['Vite','Nodejs','MongoDB', 'TailwindCSS', 'Express'],
       github: 'https://github.com/Arnav-Panchal/Camplink',
@@ -52,36 +45,84 @@ const ProjectsPage = () => {
     }
   ];
 
+  const [openProjectIndex, setOpenProjectIndex] = useState(null); // State to manage which project is open
+
+  const handleProjectClick = (index) => {
+    setOpenProjectIndex(openProjectIndex === index ? null : index); // Toggle project details
+  };
+
   return (
-    <div className="projects-page  sm:p-8 md:p-10">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-20">Projects</h1>
-      <div className="project-list gap-10 flex flex-wrap justify-center">
-        {projects.map((project, index) => (
-          <div key={index} className="project-card w-full sm:w-[90%] md:w-[45%] p-4 mb-10 border-2 border-gray-300 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 cursor-pointer">
-            <div className="relative w-full h-48 sm:h-64">
-              <Link href={project.website}>
-                <Image src={project.image} alt={project.title} layout="fill" style={{ objectFit: 'cover' }} className="rounded-lg" />
-              </Link>
-            </div>
-            <div className="project-details mt-4">
-              <h2 className="project-title text-lg sm:text-xl md:text-2xl font-semibold">{project.title}</h2>
-              <p className="project-description mt-2 text-gray-600">{project.description}</p>
-              <div className="project-tags flex flex-wrap mt-2">
-                {project.tags.map(tag => (
-                  <span key={tag} className="tag bg-gray-200 text-gray-700 px-2 py-1 rounded-full mr-2 mb-2">{tag}</span>
-                ))}
-              </div>
-              <div>
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-link mt-2 block text-blue-500 hover:underline">
-                  <AiFillGithub className='text-2xl sm:text-3xl' />
-                </a>
-              </div>
-            </div>
+    // Modified structure for a terminal-like projects section
+    <section className="py-20 px-10 bg-black text-green-400 font-mono"> {/* Dark background and green text, monospaced font */}
+      <div className="max-w-6xl mx-auto">
+        <motion.h1
+          className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white" // Adjusted heading style
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Projects {/* Changed heading text */}
+        </motion.h1>
+
+        <div className="bg-gray-900 p-6 rounded-lg shadow-lg"> {/* Terminal window-like container */}
+          <div className="flex items-center mb-4">
+            <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+            <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="ml-4 text-sm text-gray-400">Projects Directory</span>
           </div>
-        ))}
+
+          <div className="space-y-2"> {/* Space out project entries */}
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                className="cursor-pointer hover:underline" // Add hover effect and cursor
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }} // Staggered animation
+                onClick={() => handleProjectClick(index)} // Handle click to show details
+              >
+                <p>{`>`} {project.title}</p> {/* Display project title as a file/directory */}
+              </motion.div>
+            ))}
+          </div>
+
+          <AnimatePresence>
+            {openProjectIndex !== null && (
+              <motion.div
+                key={`project-details-${openProjectIndex}`}
+                className="mt-6 p-4 bg-gray-800 rounded-lg" // Container for project details
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <h3 className="text-xl font-semibold mb-2 text-white">{projects[openProjectIndex].title}</h3>
+                <p className="text-gray-300 mb-4">{projects[openProjectIndex].description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {projects[openProjectIndex].tags.map(tag => (
+                    <span key={tag} className="text-gray-400 text-xs">
+                      {`# ${tag}`} {/* Add '#' prefix */}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex space-x-4">
+                  <Link href={projects[openProjectIndex].github} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline flex items-center">
+                    <AiFillGithub className='mr-1' /> GitHub
+                  </Link>
+                  <Link href={projects[openProjectIndex].website} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                    Live Demo
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default ProjectsPage;
+export default ProjectsPage; // Keep the original export name

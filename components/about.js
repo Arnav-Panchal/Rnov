@@ -1,141 +1,101 @@
 "use client";
-import React, { useTransition, useState } from 'react';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaServer, FaDatabase } from 'react-icons/fa';
-import Image from 'next/image';
-import photo from "../public/photo.jpg";
-import TabButton from './TabButton';
-
-const TAB_DATA = [
-    {
-        title: "Frontend",
-        id: "Frontend",
-        content: (
-            <ul className="text-gray-400 py-5 text-lg sm:text-xl md:text-2xl">
-                <li className="mb-4 flex items-center">
-                    <FaHtml5 className="mr-2" />
-                    HTML
-                </li>
-                <li className="mb-4 flex items-center">
-                    <FaCss3Alt className="mr-2" />
-                    CSS
-                </li>
-                <li className="mb-4 flex items-center">
-                    <FaJs className="mr-2" />
-                    JavaScript
-                </li>
-                <li className="mb-4 flex items-center">
-                    <FaReact className="mr-2" />
-                    React.js
-                </li>
-                <li className="mb-4 flex items-center">
-                    <FaReact className="mr-2" />
-                    Next.js
-                </li>
-            </ul>
-        )
-    },
-    {
-        title: "Backend",
-        id: "Backend",
-        content: (
-            <ul className="text-gray-400 py-5 text-lg sm:text-xl md:text-2xl">
-                <li className="mb-4">Node.js</li>
-                <li className="mb-4">Spring</li>
-                <li className="mb-4">RESTful APIs</li>
-            </ul>
-        )
-    },
-    {
-        title: "Design",
-        id: "Design",
-        content: (
-            <ul className="text-gray-400 py-5 text-lg sm:text-xl md:text-2xl">
-                <li className="mb-4">Figma</li>
-                <li className="mb-4">Canva</li>
-            </ul>
-        )
-    },
-    {
-        title: "Languages",
-        id: "Languages",
-        content: (
-            <ul className="text-gray-400 py-5 text-lg sm:text-xl md:text-2xl">
-                <li className="mb-4">Java</li>
-                <li className="mb-4">JavaScript</li>
-                <li className="mb-4">Python</li>
-                <li className="mb-4">C/C++</li>
-            </ul>
-        )
-    },
-    {
-        title: "Database",
-        id: "Database",
-        content: (
-            <ul className="text-gray-400 py-5 text-lg sm:text-xl md:text-2xl">
-                <li className="mb-4 flex items-center">
-                    <FaDatabase className="mr-2" />
-                    MySQL
-                </li>
-            </ul>
-        )
-    },
-    {
-        title: "Others",
-        id: "Others",
-        content: (
-            <ul className="text-gray-400 py-5 text-lg sm:text-xl md:text-2xl">
-                <li className="mb-4">Git</li>
-                <li className="mb-4">GitHub</li>
-                <li className="mb-4">LaTeX</li>
-            </ul>
-        )
-    }
-];
+import React from 'react';
+import Image from 'next/image'; // Keep Image if you want to include your photo
+import photo from "../public/photo.jpg"; // Assuming the image path remains the same
+import { motion } from 'framer-motion'; // Import motion
 
 const Aboutme = () => {
-    const [tab, setTab] = useState("Frontend");
-    const [isPending, startTransition] = useTransition();
+  const skills = { // Keep your skills data
+    Frontend: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Next.js'],
+    Backend: ['Node.js', 'Spring', 'RESTful APIs'],
+    Design: ['Figma', 'Canva'],
+    Languages: ['Java', 'JavaScript', 'Python', 'C/C++'],
+    Database: ['MySQL'],
+    Others: ['Git', 'GitHub', 'LaTeX']
+  };
 
-    const handleTabChange = (id) => {
-        startTransition(() => {
-            setTab(id);
-        });
-    };
+  return (
+    // Modified structure for a terminal-like About Me section
+    <section className="py-20 px-10 bg-black text-green-400 font-mono"> {/* Dark background and green text, monospaced font */}
+      <div className="max-w-6xl mx-auto">
+        <motion.h2
+          className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-10 text-white" // Adjusted heading style
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          About Me {/* Changed heading text */}
+        </motion.h2>
 
-    return (
-        <section className="text-white border-b border-teal-200 pb-20 pt-10">
-            <div className="md:grid md:grid-cols-3 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 rounded-xl border text-card-foreground shadow hover:scale-105 transition-transform duration-300">
-                <div className="col-span-1 flex items-center justify-center sm:justify-start"> 
-                    <Image src={photo} className="rounded-full px-5 py-5" alt="Profile" height={300} width={300} />
+        <div className="bg-gray-900 p-6 rounded-lg shadow-lg"> {/* Terminal window-like container */}
+          <div className="flex items-center mb-4">
+            <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+            <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="ml-4 text-sm text-gray-400">AboutMe.txt</span> {/* Simulated file name */}
+          </div>
+
+          {/* Simulated command output for About Me text */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <p>{`>`} cat about.txt</p>
+            <p className="whitespace-pre-wrap">{`
+Full Stack Development, I am a skilled Java developer with proficiency in web development
+and Data Structures and Algorithms (DSA) in Java. Currently in my third year of a BE IT
+undergraduate program at SKNSITS College, affiliated with SPPU University, I am eager to
+take on the role of a Full Stack Developer. My goal is to leverage my expertise in Data
+Structures and Algorithms, web development, collaboration, and corporate relations to enhance
+branding and contribute effectively to your organization.
+            `}</p> {/* Use whitespace-pre-wrap to maintain formatting */}
+          </motion.div>
+
+          <br/>
+
+          {/* Simulated command output for Skills */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <p>{`>`} ls -l skills</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2"> {/* Grid for skills categories */}
+              {Object.entries(skills).map(([category, skillList]) => (
+                <div key={category}>
+                  {/* Removed simulated file info, display only category */}
+                  <p className="text-gray-400">{category}</p> 
+                  <ul className="ml-6 list-disc list-inside"> {/* Indented list for skills */}
+                    {skillList.map((skill, skillIndex) => (
+                      <li key={skillIndex} className="text-green-400">{skill}</li> 
+                    ))}
+                  </ul>
                 </div>
-                <div className="col-span-2 mt-8 md:mt-0">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl text-center font-bold mb-8">About Me</h1>
-                    <p className="text-base sm:text-lg md:text-xl py-2">
-                        Full Stack Development, I am a skilled Java developer with proficiency in web development 
-                        and Data Structures and Algorithms (DSA) in Java. Currently in my third year of a BE IT 
-                        undergraduate program at SKNSITS College, affiliated with SPPU University, I am eager to
-                        take on the role of a Full Stack Developer. My goal is to leverage my expertise in Data 
-                        Structures and Algorithms, web development, collaboration, and corporate relations to enhance
-                        branding and contribute effectively to your organization.
-                    </p>
-                    <div className="flex flex-wrap justify-center md:justify-start mt-8">
-                        {TAB_DATA.map((tabData) => (
-                            <TabButton
-                                key={tabData.id}
-                                selectTab={() => handleTabChange(tabData.id)}
-                                active={tab === tabData.id}
-                            >
-                                {tabData.title}
-                            </TabButton>
-                        ))}
-                    </div>
-                    <div className="mt-8">
-                        {TAB_DATA.find((t) => t.id === tab).content}
-                    </div>
-                </div>
+              ))}
             </div>
-        </section>
-    );
+          </motion.div>
+
+          {/* Optional: Include your photo in a geeky way, e.g., as an ASCII art representation or a small terminal-like image viewer */}
+           {/* <motion.div
+             initial={{ opacity: 0 }}
+             whileInView={{ opacity: 1 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8, delay: 0.6 }}
+             className="mt-6"
+           >
+             <p>{`>`} display photo.jpg</p>
+             {/* You would replace this with an actual image component or ASCII art */}
+             {/* <Image src={photo} alt="Profile" width={100} height={100} className="mt-2 border border-green-400" /> */}
+           {/* </motion.div> */}
+
+        </div>
+      </div>
+    </section>
+  );
 };
 
-export default Aboutme;
+export default Aboutme; // Keep the original export name
