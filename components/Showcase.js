@@ -1,66 +1,84 @@
 "use client"
-import React, { useState } from 'react';
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'; // Import AnimatePresence
 
 export default function Showcase() {
-  const projects = [
-    {
-      title: 'Project 1',
-      description: 'Description for Project 1.',
-      url: '/web4.png',
-    },
-    {
-      title: 'Project 2',
-      description: 'Description for Project 2.',
-      url: '/Web2.png',
-    },
-    {
-      title: 'Project 3',
-      description: 'Description for Project 3.',
-      url: '/Web3.png',
-    },
-    {
-      title: 'Project 4',
-      description: 'Description for Project 4.',
-      url: '/Web1.png',
-    },
-    {
-      title: 'Project 5',
-      description: 'Description for Project 5.',
-      url: '/Web5.png',
-    },
-  ];
+  const textToType = "Arnav Panchal"; // Your name
+  const [displayText, setDisplayText] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    let currentText = "";
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < textToType.length) {
+        currentText += textToType.charAt(i);
+        setDisplayText(currentText);
+        i++;
+      } else {
+        clearInterval(typingInterval);
+        // Start cursor blinking after typing is complete
+        const cursorInterval = setInterval(() => {
+          setShowCursor(prev => !prev);
+        }, 500); // Blinking speed
+        return () => clearInterval(cursorInterval);
+      }
+    }, 100); // Typing speed
 
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? projects.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
+    return () => clearInterval(typingInterval);
+  }, [textToType]);
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === projects.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
 
   return (
-    <div className='max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group'>
-      <div
-        style={{ backgroundImage: `url(${projects[currentIndex].url})` }}
-        className='w-full h-full rounded-2xl bg-center bg-cover duration-500'></div>
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-        <BsChevronCompactLeft onClick={prevSlide} size={30} />
+    // Modified structure for a terminal-like hero section
+    <section className="h-screen flex items-center bg-black text-green-400 px-10"> {/* Dark background and green text */}
+      <div className="max-w-4xl mx-auto"> {/* Adjust max-width and centering if needed */}
+        <div className="text-left font-mono text-lg md:text-xl"> {/* Apply monospaced font and adjust size */}
+          <motion.div
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ duration: 1 }}
+          >
+             <p>{`>`} Initializing portfolio...</p>
+             <p>{`>`} Connecting to data streams...</p>
+             <p>{`>`} Access granted.</p>
+             <br/>
+          </motion.div>
+
+          <div className="flex">
+             <p>{`>`} </p>
+             <motion.p
+               className="ml-1" // Add some space after the prompt
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ duration: 1, delay: 3 }} // Delay typing animation
+             >
+               {displayText}
+               <AnimatePresence>
+                 {showCursor && (
+                   <motion.span
+                     className="inline-block w-2 h-5 bg-green-400 ml-1" // Cursor style
+                     initial={{ opacity: 1 }}
+                     exit={{ opacity: 0 }}
+                     transition={{ repeat: Infinity, duration: 0.5, ease: "linear" }}
+                   >
+                   </motion.span>
+                 )}
+               </AnimatePresence>
+             </motion.p>
+          </div>
+
+
+          <motion.p
+             className="mt-2" // Add some space below the typed text
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ duration: 1, delay: 4 }} // Delay appearance
+          >
+            Full Stack Developer {/* Your title/tagline */}
+          </motion.p>
+        </div>
       </div>
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-        <BsChevronCompactRight onClick={nextSlide} size={30} />
-      </div>
-      <div className='absolute bottom-5 left-0 right-0 text-center'>
-        <h2 className='text-3xl font-bold mb-2 m-10'>{projects[currentIndex].title}</h2>
-        <p className='text-gray-500'>{projects[currentIndex].description}</p>
-      </div>
-    </div>
-    
+    </section>
   );
 }

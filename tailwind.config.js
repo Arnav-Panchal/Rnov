@@ -10,6 +10,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Add fontFamily configuration
+      fontFamily: {
+        sans: ['Roboto Mono', 'sans-serif'], // Set Roboto Mono as the default sans font
+        mono: ['Roboto Mono', 'monospace'], // Keep 'mono' for explicit use if needed
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

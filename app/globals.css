@@ -3,26 +3,116 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* Light mode colors */
+  --primary-color: #007bff; /* A shade of blue */
+  --secondary-color: #6c757d; /* A shade of gray */
+  --accent-color: #28a745; /* A shade of green */
+  --text-color-primary: #212529; /* Dark text */
+  --text-color-secondary: #495057; /* Slightly lighter text */
+  --background-color-light: #f8f9fa; /* Light background */
+  --card-background-light: #ffffff; /* White card background */
+  --border-color-light: #dee2e6; /* Light border */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* Dark mode colors */
+    --primary-color: #0056b3; /* A darker shade of blue */
+    --secondary-color: #5a6268; /* A darker shade of gray */
+    --accent-color: #218838; /* A darker shade of green */
+    --text-color-primary: #f8f9fa; /* Light text */
+    --text-color-secondary: #ced4da; /* Slightly darker text */
+    --background-color-dark: #212529; /* Dark background */
+    --card-background-dark: #343a40; /* Dark card background */
+    --border-color-dark: #454d55; /* Dark border */
   }
 }
 
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* Use a modern sans-serif font, like 'Inter' or 'Roboto' */
+  font-family: 'Inter', sans-serif; /* Example font family */
+  line-height: 1.6;
+  color: var(--text-color-primary);
+  background-color: var(--background-color-light);
+  /* Smooth scrolling for better user experience */
+  scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--text-color-primary);
+    background-color: var(--background-color-dark);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-color-primary);
+  /* Ensure headings use the primary text color and are visually distinct */
+  margin-bottom: 0.5em; /* Add some bottom margin */
+}
+
+/* Apply colors using Tailwind CSS classes and the defined variables */
+.bg-background-light {
+  background-color: var(--background-color-light);
+}
+
+.bg-background-dark {
+  background-color: var(--background-color-dark);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-text-primary {
+    color: var(--text-color-primary);
+}
+
+.text-text-secondary {
+    color: var(--text-color-secondary);
+}
+
+.bg-card-light {
+  background-color: var(--card-background-light);
+}
+
+.bg-card-dark {
+  background-color: var(--card-background-dark);
+}
+
+.border-color-light {
+  border-color: var(--border-color-light);
+}
+
+.border-color-dark {
+  border-color: var(--border-color-dark);
+}
+
+/* Add some basic responsive padding to sections */
+section {
+  padding: 4rem 1rem; /* Default padding */
+}
+
+@media (min-width: 640px) {
+  section {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 6rem 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding: 8rem 6rem;
+  }
 }

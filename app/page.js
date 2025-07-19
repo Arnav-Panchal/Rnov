@@ -1,73 +1,29 @@
+import Head from 'next/head';
+import Navr from '@/components/Navr'; // Assuming this is your navigation component
+import Aboutme from '@/components/about'; // Your existing Aboutme component
+import ProjectsPage from '@/components/Projects'; // Your existing Projects component
+import Email from '@/components/Email'; // Assuming this is your contact component
+import Footer from '@/components/footer'; // Assuming this is your footer component
+import Showcase from '@/components/Showcase'; // Assuming this is your hero/showcase component
 
-"use client"
-
-import { useEffect, useState } from "react";
-import Aboutme from "@/components/about";
-import Navr from "@/components/Navr";
-import Headerr from '../components/header';
-import Project from "@/components/Projects";
-import ContactForm from "@/components/Email";
-import Footer from "@/components/footer";
 
 export default function Home() {
-  // Using useState with null as initial value to prevent hydration mismatch
-  const [scrollY, setScrollY] = useState(null);
-
-  // Update scrollY state when user scrolls, but only client-side
-  useEffect(() => {
-    // Set initial scroll position after component mounts (client-side only)
-    setScrollY(window.scrollY);
-    
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Clean up
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <div className="min-h-screen relative">
-      {/* Parallax Background - only apply transform when scrollY is available (client-side) */}
-      <div 
-        className="fixed inset-0 w-full h-full z-0"
-        style={{
-          backgroundImage: "url('/bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          // transform: scrollY !== null ? `translateY(${scrollY * 0.5}px)` : 'none',
-          transition: "transform 0.1s ease-out",
-        }}
-      />
-      
-      {/* Content Container - using bg-black/80 for semi-transparent background */}
-      <main className="relative z-10 bg-black/70 dark:bg-gray-900/80 px-4 sm:px-8 md:px-20" suppressHydrationWarning>
-        <section>
-          <Headerr />
-          <Navr />
-        </section>
-        
-        <section className="py-10 sm:py-20">
-          <div>
-            <Aboutme />
-          </div>
-        </section>
-        
-        <section>
-          <Project />
-        </section>
-        
-        <section>
-          <ContactForm />
-        </section>
-        
-        <Footer />
+    <div>
+      <Head>
+        <title>Your Name - Portfolio</title>
+        <meta name="description" content="Your portfolio description" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      {/* Modify the main element for overall layout */}
+      <main className="flex min-h-screen flex-col"> {/* Removed p-24 and justify-between */}
+        <Navr /> {/* Your navigation */}
+        <Showcase /> {/* Your hero/showcase section */}
+        <Aboutme /> {/* Your About Me section */}
+        <ProjectsPage /> {/* Your Projects section */}
+        <Email /> {/* Your Contact section */}
+        <Footer /> {/* Your Footer */}
       </main>
     </div>
   );
