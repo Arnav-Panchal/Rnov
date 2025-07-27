@@ -1,13 +1,19 @@
-import Head from 'next/head';
-import Navr from '@/components/Navr'; // Assuming this is your navigation component
-import Aboutme from '@/components/about'; // Your existing Aboutme component
-import ProjectsPage from '@/components/Projects'; // Your existing Projects component
-import Email from '@/components/Email'; // Assuming this is your contact component
-import Footer from '@/components/footer'; // Assuming this is your footer component
-import Showcase from '@/components/Showcase'; // Assuming this is your hero/showcase component
+'use client';
 
+import Head from 'next/head';
+import { useEffect } from 'react';
+import Navr from '@/components/Navr';
+import Aboutme from '@/components/about';
+import ProjectsPage from '@/components/Projects';
+import Email from '@/components/Email';
+import Footer from '@/components/footer';
+import Showcase from '@/components/Showcase';
 
 export default function Home() {
+  useEffect(() => {
+    fetch('/api/track');
+  }, []);
+
   return (
     <div>
       <Head>
@@ -16,14 +22,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Modify the main element for overall layout */}
-      <main className="flex min-h-screen flex-col"> {/* Removed p-24 and justify-between */}
-        <Navr /> {/* Your navigation */}
-        <Showcase /> {/* Your hero/showcase section */}
-        <Aboutme /> {/* Your About Me section */}
-        <ProjectsPage /> {/* Your Projects section */}
-        <Email /> {/* Your Contact section */}
-        <Footer /> {/* Your Footer */}
+      <main className="flex min-h-screen flex-col">
+        <Navr />
+        <Showcase />
+        <Aboutme />
+        <ProjectsPage />
+        <Email />
+        <Footer />
       </main>
     </div>
   );
