@@ -61,13 +61,15 @@ export default function AIAssistantDark() {
   }
 
   return (
+    
     <motion.div
-      className="flex flex-col h-[600px] w-full max-w-2xl border border-gray-700 rounded-md bg-black text-green-400 shadow-lg"
+      className="flex flex-col h-[600px] w-full max-w-6xl border border-gray-700 rounded-md bg-black text-green-400 shadow-lg"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
+      
       <div className="px-4 py-3 border-b border-gray-700">
         <div className="flex items-center mb-3">
           <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
