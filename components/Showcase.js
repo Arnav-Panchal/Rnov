@@ -124,7 +124,7 @@ export default function Showcase() {
         </div>
         {/* Download Resume button */}
         <div className="mt-8 flex justify-center">
-          <Link href="/AI resume.pdf" target="_blank" rel="noopener noreferrer">
+          <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
             <span className="bg-black border border-green-400 text-green-400 px-6 py-2 rounded-full font-bold text-lg shadow-lg hover:bg-green-400 hover:text-black transition-colors duration-200 cursor-pointer flex items-center gap-2">
               <span className="animate-pulse">$</span> Download Resume
             </span>
