@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Navr from '@/components/Navr';
 import Footer from '@/components/footer';
 
-export default function BlogAdmin() {
+function BlogAdminContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [secret, setSecret] = useState('');
@@ -167,5 +167,13 @@ export default function BlogAdmin() {
 
             <Footer />
         </div>
+    );
+}
+
+export default function BlogAdmin() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <BlogAdminContent />
+        </Suspense>
     );
 }
