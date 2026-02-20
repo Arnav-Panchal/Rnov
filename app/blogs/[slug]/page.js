@@ -7,6 +7,10 @@ import Navr from '@/components/Navr';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 
+/**
+ * BlogPost component for rendering individual articles.
+ * Uses ReactMarkdown for content parsing and custom CSS for styling.
+ */
 export default function BlogPost({ params }) {
     const { slug } = params;
     const [blog, setBlog] = useState(null);
