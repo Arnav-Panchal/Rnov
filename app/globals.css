@@ -3,27 +3,43 @@
 
 :root {
   /* Light mode colors */
-  --primary-color: #007bff; /* A shade of blue */
-  --secondary-color: #6c757d; /* A shade of gray */
-  --accent-color: #28a745; /* A shade of green */
-  --text-color-primary: #212529; /* Dark text */
-  --text-color-secondary: #495057; /* Slightly lighter text */
-  --background-color-light: #f8f9fa; /* Light background */
-  --card-background-light: #ffffff; /* White card background */
-  --border-color-light: #dee2e6; /* Light border */
+  --primary-color: #007bff;
+  /* A shade of blue */
+  --secondary-color: #6c757d;
+  /* A shade of gray */
+  --accent-color: #28a745;
+  /* A shade of green */
+  --text-color-primary: #212529;
+  /* Dark text */
+  --text-color-secondary: #495057;
+  /* Slightly lighter text */
+  --background-color-light: #f8f9fa;
+  /* Light background */
+  --card-background-light: #ffffff;
+  /* White card background */
+  --border-color-light: #dee2e6;
+  /* Light border */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark mode colors */
-    --primary-color: #0056b3; /* A darker shade of blue */
-    --secondary-color: #5a6268; /* A darker shade of gray */
-    --accent-color: #218838; /* A darker shade of green */
-    --text-color-primary: #f8f9fa; /* Light text */
-    --text-color-secondary: #ced4da; /* Slightly darker text */
-    --background-color-dark: #212529; /* Dark background */
-    --card-background-dark: #343a40; /* Dark card background */
-    --border-color-dark: #454d55; /* Dark border */
+    --primary-color: #0056b3;
+    /* A darker shade of blue */
+    --secondary-color: #5a6268;
+    /* A darker shade of gray */
+    --accent-color: #218838;
+    /* A darker shade of green */
+    --text-color-primary: #f8f9fa;
+    /* Light text */
+    --text-color-secondary: #ced4da;
+    /* Slightly darker text */
+    --background-color-dark: #212529;
+    /* Dark background */
+    --card-background-dark: #343a40;
+    /* Dark card background */
+    --border-color-dark: #454d55;
+    /* Dark border */
   }
 }
 
@@ -53,12 +69,18 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-color-primary);
   /* Ensure headings use the primary text color and are visually distinct */
-  margin-bottom: 0.5em; /* Add some bottom margin */
+  margin-bottom: 0.5em;
+  /* Add some bottom margin */
 }
 
 /* Apply colors using Tailwind CSS classes and the defined variables */
@@ -79,11 +101,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-text-primary {
-    color: var(--text-color-primary);
+  color: var(--text-color-primary);
 }
 
 .text-text-secondary {
-    color: var(--text-color-secondary);
+  color: var(--text-color-secondary);
 }
 
 .bg-card-light {
@@ -129,4 +151,169 @@ section {
   section {
     padding: 8rem 6rem;
   }
+}
+
+/* ========== Blog Markdown Content Styles ========== */
+.prose {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.8;
+}
+
+.prose h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #f0f0f0;
+  letter-spacing: -0.02em;
+}
+
+.prose h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: #e0e0e0;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #27272a;
+}
+
+.prose h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #d4d4d8;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #a1a1aa;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+  color: #d4d4d8;
+}
+
+.prose strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.prose em {
+  color: #a1a1aa;
+  font-style: italic;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.375rem;
+  color: #d4d4d8;
+}
+
+.prose li::marker {
+  color: #4ade80;
+}
+
+.prose blockquote {
+  border-left: 3px solid #4ade80;
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: rgba(74, 222, 128, 0.05);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.prose blockquote p {
+  color: #a1a1aa;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.prose code {
+  background: #18181b;
+  color: #4ade80;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: 'VT323', monospace;
+}
+
+.prose pre {
+  background: #0a0a0a;
+  border: 1px solid #27272a;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: #d4d4d8;
+  font-size: 0.875rem;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #27272a;
+  margin: 2.5rem 0;
+}
+
+.prose a {
+  color: #4ade80;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: #86efac;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.prose th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #27272a;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.prose td {
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid #18181b;
+  color: #d4d4d8;
+}
+
+.prose img {
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.prose del {
+  color: #71717a;
 }

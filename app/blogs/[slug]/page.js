@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import Navr from '@/components/Navr';
 import Footer from '@/components/footer';
 import Link from 'next/link';
@@ -47,7 +49,7 @@ export default function BlogPost({ params }) {
         return (
             <div className="flex min-h-screen flex-col bg-black font-mono text-white">
                 <Navr />
-                <main className="flex-grow max-w-4xl mx-auto w-full px-8 py-20 text-center">
+                <main className="flex-grow max-w-6xl mx-auto w-full px-8 py-20 text-center">
                     <h1 className="text-4xl font-bold mb-4 text-red-500">404: Not Found</h1>
                     <p className="text-zinc-400 mb-8">{error || "The article you're looking for doesn't exist."}</p>
                     <Link href="/blogs" className="bg-zinc-800 px-6 py-3 rounded-xl hover:bg-zinc-700 transition-colors">
@@ -63,7 +65,7 @@ export default function BlogPost({ params }) {
         <div className="flex min-h-screen flex-col bg-black font-mono text-white">
             <Navr />
 
-            <main className="flex-grow max-w-4xl mx-auto w-full px-8 py-20">
+            <main className="flex-grow max-w-6xl mx-auto w-full px-8 py-20">
                 <Link
                     href="/blogs"
                     className="text-zinc-500 hover:text-green-400 transition-colors mb-12 block group"
@@ -90,9 +92,10 @@ export default function BlogPost({ params }) {
                 </header>
 
                 <article className="prose prose-invert prose-green max-w-none">
-                    {/* Simple content rendering - in a real app use react-markdown */}
-                    <div className="text-zinc-300 text-lg leading-relaxed whitespace-pre-wrap">
-                        {blog.content}
+                    <div className="text-zinc-300 text-lg leading-relaxed">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                            {blog.content}
+                        </ReactMarkdown>
                     </div>
                 </article>
 
