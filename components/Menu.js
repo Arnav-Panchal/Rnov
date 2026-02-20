@@ -14,26 +14,29 @@ const MenuPage = () => {
 
   return (
     <div >
-    <div className="menu-container">
-      <div className="content">
-        <Link href="Resume.pdf">
-          <div className="menu-item " > Resume <a/></div>
-        </Link>
-        <Link href="/about">
-          <div className="menu-item">About Me</div>
-        </Link>
-        <Link href="/email">
-          <div className="menu-item">Contact me</div>
-        </Link>
-        <Link href="/projects">
-          <div className="menu-item">Projects</div>
-        </Link>
-        <Link href="/certifications">
-          <div className="menu-item">Certifications</div>
-        </Link>
-      </div>
+      <div className="menu-container">
+        <div className="content">
+          <Link href="Resume.pdf">
+            <div className="menu-item " > Resume <a /></div>
+          </Link>
+          <Link href="/about">
+            <div className="menu-item">About Me</div>
+          </Link>
+          <Link href="/email">
+            <div className="menu-item">Contact me</div>
+          </Link>
+          <Link href="/blogs">
+            <div className="menu-item">Blogs</div>
+          </Link>
+          <Link href="/projects">
+            <div className="menu-item">Projects</div>
+          </Link>
+          <Link href="/certifications">
+            <div className="menu-item">Certifications</div>
+          </Link>
+        </div>
 
-      <style jsx>{`
+        <style jsx>{`
         .menu-container {
           display: flex;
           flex-direction: column; /* Change to column */
@@ -66,7 +69,7 @@ const MenuPage = () => {
           color: white;
         }
       `}</style>
-    </div>
+      </div>
     </div>
   );
 };

@@ -12,6 +12,8 @@ import AIAssistant from '@/components/AIAssistant';
 
 export default function Home() {
   useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
     fetch('/api/track');
   }, []);
 

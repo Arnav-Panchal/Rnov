@@ -20,14 +20,21 @@ const Header = () => { // Keep the original component name
     <header className="sticky top-0 z-50 bg-black bg-opacity-95 font-mono shadow-md">
       <div className="max-w-6xl mx-auto flex justify-between items-center py-5 px-8">
         {/* Logo */}
-        <span className="text-3xl font-extrabold text-white tracking-tight select-none">Arnav<span className="text-green-400">.</span></span>
-        {/* Desktop: Get In Touch button only */}
-        <nav className="hidden md:flex items-center">
-          <a href="#contact">
-            <button className="px-6 py-3 rounded-xl font-semibold bg-green-400 text-black hover:bg-green-500 transition-colors duration-200 shadow-green-400/30 shadow-lg text-lg">
-              Get In Touch
-            </button>
-          </a>
+        <Link href="/">
+          <span className="text-3xl font-extrabold text-white tracking-tight select-none cursor-pointer">
+            Arnav<span className="text-green-400">.</span>
+          </span>
+        </Link>
+        {/* Desktop: Navigation links */}
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="/blogs">
+            <span className="text-white text-lg font-semibold hover:text-green-400 transition-colors duration-200 cursor-pointer">
+              Blogs
+            </span>
+          </Link>
+          <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="px-6 py-3 rounded-xl font-semibold bg-green-400 text-black hover:bg-green-500 transition-colors duration-200 shadow-green-400/30 shadow-lg text-lg">
+            Get In Touch
+          </button>
         </nav>
         {/* Hamburger for Mobile: shows only the button */}
         <button
@@ -40,7 +47,7 @@ const Header = () => { // Keep the original component name
           <span className={`block w-8 h-1 bg-green-400 rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
         </button>
       </div>
-      {/* Mobile Menu: only the button */}
+      {/* Mobile Menu */}
       <nav
         className={`fixed top-0 right-0 h-full w-72 bg-black bg-opacity-95 shadow-lg flex flex-col gap-10 p-10 md:hidden z-50 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
@@ -52,11 +59,14 @@ const Header = () => { // Keep the original component name
         >
           &times;
         </button>
-        <a href="#contact">
-          <button className="mt-6 px-6 py-3 rounded-xl font-semibold bg-green-400 text-black hover:bg-green-500 transition-colors duration-200 shadow-green-400/30 shadow-lg w-full text-lg" onClick={() => setMenuOpen(false)}>
-            Get In Touch
-          </button>
-        </a>
+        <Link href="/blogs" onClick={() => setMenuOpen(false)}>
+          <span className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200 cursor-pointer">
+            Blogs
+          </span>
+        </Link>
+        <button className="mt-6 px-6 py-3 rounded-xl font-semibold bg-green-400 text-black hover:bg-green-500 transition-colors duration-200 shadow-green-400/30 shadow-lg w-full text-lg" onClick={() => { setMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
+          Get In Touch
+        </button>
       </nav>
     </header>
   );

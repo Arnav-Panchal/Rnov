@@ -16,7 +16,13 @@ export default function AIAssistantDark() {
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef(null);
 
+  const isInitialRender = useRef(true);
+
   useEffect(() => {
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
+    }
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
@@ -61,7 +67,7 @@ export default function AIAssistantDark() {
   }
 
   return (
-    
+
     <motion.div
       className="flex flex-col h-[600px] w-full max-w-6xl border border-gray-700 rounded-md bg-black text-green-400 shadow-lg"
       initial={{ opacity: 0, y: 50 }}
@@ -69,7 +75,7 @@ export default function AIAssistantDark() {
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      
+
       <div className="px-4 py-3 border-b border-gray-700">
         <div className="flex items-center mb-3">
           <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
@@ -89,11 +95,10 @@ export default function AIAssistantDark() {
             className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-xs px-3 py-2 rounded text-xs leading-relaxed whitespace-pre-wrap ${
-                m.role === "user"
-                  ? "bg-green-600 text-black"
-                  : "text-green-400"
-              }`}
+              className={`max-w-xs px-3 py-2 rounded text-xs leading-relaxed whitespace-pre-wrap ${m.role === "user"
+                ? "bg-green-600 text-black"
+                : "text-green-400"
+                }`}
             >
               {m.role === "assistant" && <span className="text-green-500">{">"} </span>}
               {m.content}
@@ -117,6 +122,8 @@ export default function AIAssistantDark() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Enter command..."
           disabled={loading}
+          tabIndex={-1}
+          onFocus={(e) => e.target.tabIndex = 0}
           className="flex-1 border border-gray-700 rounded px-3 py-2 text-xs bg-black text-green-400 placeholder-gray-500 focus:outline-none focus:border-green-400 font-mono"
         />
         <button
