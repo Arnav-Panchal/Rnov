@@ -24,6 +24,10 @@ export default function BlogPost({ params }) {
                 if (!res.ok) throw new Error('Blog not found or database unreachable');
                 const data = await res.json();
                 setBlog(data);
+
+                // Track view after successful fetch
+                fetch(`/api/blogs/${slug}/view`, { method: 'POST' }).catch(err => console.error('Tracking error:', err));
+
             } catch (err) {
                 console.error(err);
                 setError(err.message);
@@ -90,6 +94,8 @@ export default function BlogPost({ params }) {
                     </h1>
                     <div className="flex items-center text-zinc-500 gap-4">
                         <span>{blog.date}</span>
+                        <span className="w-1 h-1 bg-zinc-700 rounded-full"></span>
+                        <span>{blog.views || 0} views</span>
                         <span className="w-1 h-1 bg-zinc-700 rounded-full"></span>
                         <span>By Arnav Panchal</span>
                     </div>
