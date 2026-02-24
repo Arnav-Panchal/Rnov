@@ -151,10 +151,7 @@ function BlogAdminContent() {
                                         <div key={i} className="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl hover:border-zinc-700 transition-colors group">
                                             <div className="text-xs text-zinc-500 mb-1">/{b.slug}</div>
                                             <div className="text-lg font-bold text-white mb-4 line-clamp-1">{b.title}</div>
-                                            <div className="flex items-end justify-between">
-                                                <div className="text-3xl font-black text-green-400">{b.views || 0}</div>
-                                                <div className="text-xs text-zinc-500 font-bold tracking-widest uppercase">Unique Views</div>
-                                            </div>
+
                                         </div>
                                     ))
                                 )}
