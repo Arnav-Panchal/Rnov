@@ -22,6 +22,7 @@ export default function Home() {
       <Head>
         <title>Your Name - Portfolio</title>
         <meta name="description" content="Your portfolio description" />
+        <meta name="google-site-verification" content="MSvmNWYtqkSoXu_sLDZxQM8JUR07PjNg6lj7mlOs034" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
