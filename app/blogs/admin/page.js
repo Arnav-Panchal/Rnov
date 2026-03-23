@@ -19,6 +19,7 @@ function BlogAdminContent() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [blogs, setBlogs] = useState([]);
     const [isLoadingStats, setIsLoadingStats] = useState(false);
+    const [editingSlug, setEditingSlug] = useState(null);
 
     // Fetch stats
     const fetchStats = async () => {
@@ -55,6 +56,23 @@ function BlogAdminContent() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const handleEdit = (blog) => {
+        setEditingSlug(blog.slug);
+        setFormData({
+            title: blog.title || '',
+            excerpt: blog.excerpt || '',
+            content: blog.content || '',
+            tags: Array.isArray(blog.tags) ? blog.tags.join(', ') : (blog.tags || '')
+        });
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    };
+
+    const cancelEdit = () => {
+        setEditingSlug(null);
+        setFormData({ title: '', excerpt: '', content: '', tags: '' });
+        setStatus({ type: '', message: '' });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!secret) {
@@ -63,11 +81,14 @@ function BlogAdminContent() {
         }
 
         setIsSubmitting(true);
-        setStatus({ type: 'loading', message: 'Deploying article...' });
+        setStatus({ type: 'loading', message: editingSlug ? 'Updating article...' : 'Deploying article...' });
 
         try {
-            const res = await fetch('/api/blogs', {
-                method: 'POST',
+            const url = editingSlug ? `/api/blogs/${editingSlug}` : '/api/blogs';
+            const method = editingSlug ? 'PUT' : 'POST';
+
+            const res = await fetch(url, {
+                method: method,
                 headers: {
                     'Content-Type': 'application/json',
                     'x-admin-secret': secret
@@ -88,7 +109,8 @@ function BlogAdminContent() {
                 throw new Error(data.error || data.message || 'Failed to post blog');
             }
 
-            setStatus({ type: 'success', message: 'Article deployed successfully!' });
+            setStatus({ type: 'success', message: editingSlug ? 'Article updated successfully!' : 'Article deployed successfully!' });
+            if (editingSlug) setEditingSlug(null);
             setFormData({ title: '', excerpt: '', content: '', tags: '' });
 
             // Refresh stats after posting
@@ -151,7 +173,12 @@ function BlogAdminContent() {
                                         <div key={i} className="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl hover:border-zinc-700 transition-colors group">
                                             <div className="text-xs text-zinc-500 mb-1">/{b.slug}</div>
                                             <div className="text-lg font-bold text-white mb-4 line-clamp-1">{b.title}</div>
-
+                                            <button
+                                                onClick={() => handleEdit(b)}
+                                                className="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 py-1 rounded-md transition-colors"
+                                            >
+                                                Edit
+                                            </button>
                                         </div>
                                     ))
                                 )}
@@ -160,8 +187,20 @@ function BlogAdminContent() {
 
                         {/* Editor Section */}
                         <section className="pt-12 border-t border-zinc-900">
-                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
-                                <span className="text-green-400 mr-2">#</span> Create New Article
+                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center justify-between">
+                                <div className="flex items-center">
+                                    <span className="text-green-400 mr-2">#</span> 
+                                    {editingSlug ? 'Edit Article' : 'Create New Article'}
+                                </div>
+                                {editingSlug && (
+                                    <button 
+                                        type="button" 
+                                        onClick={cancelEdit}
+                                        className="text-sm bg-zinc-800 hover:bg-zinc-700 px-3 py-1 rounded text-zinc-300 transition-colors"
+                                    >
+                                        Cancel Edit
+                                    </button>
+                                )}
                             </h2>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-4">
@@ -223,7 +262,7 @@ function BlogAdminContent() {
                                     disabled={isSubmitting}
                                     className="w-full bg-green-400 text-black py-4 rounded-xl font-bold text-lg hover:bg-green-500 transition-all shadow-lg shadow-green-400/20 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {isSubmitting ? 'Processing...' : 'Deploy to Production'}
+                                    {isSubmitting ? 'Processing...' : (editingSlug ? 'Update Production' : 'Deploy to Production')}
                                 </button>
                             </form>
                         </section>

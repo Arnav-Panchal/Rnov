@@ -35,3 +35,47 @@ export async function GET(req, { params }) {
         );
     }
 }
+
+export async function PUT(req, { params }) {
+    const { slug } = params;
+
+    try {
+        const secret = req.headers.get("x-admin-secret");
+        
+        if (!secret || secret !== process.env.BLOG_ADMIN_SECRET) {
+            return NextResponse.json(
+                { error: "Unauthorized: Invalid Secret" },
+                { status: 401 }
+            );
+        }
+
+        const body = await req.json();
+        const client = await clientPromise;
+        const db = client.db("market");
+
+        // Remove unmodifiable fields
+        const { _id, slug: oldSlug, createdAt, ...updateData } = body;
+
+        // Optionally, if the title was updated, we could update the slug, 
+        // but typically it's better to keep the slug the same to avoid breaking links.
+        // We'll just update the content, title, excerpt, and tags.
+        
+        const result = await db.collection("blogs").updateOne(
+            { slug },
+            { $set: updateData }
+        );
+
+        if (result.matchedCount === 0) {
+            return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+        }
+
+        return NextResponse.json({ message: "Blog updated successfully" }, { status: 200 });
+
+    } catch (error) {
+        console.error("PUT Error:", error);
+        return NextResponse.json(
+            { error: "Internal Server Error", message: error.message },
+            { status: 500 }
+        );
+    }
+}
