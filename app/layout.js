@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         {/* Add the Roboto Mono font link */}
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
         <meta name="google-site-verification" content="MSvmNWYtqkSoXu_sLDZxQM8JUR07PjNg6lj7mlOs034" />
-        <meta name="vibe-index-verify" content="vbi-2311b66290b790c4"/>
+        <meta name="vibe-index-verify" content="vbi-e3dcaf39b0e3502d"/>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-7H913EQK7P"></script>
         <script
           dangerouslySetInnerHTML={{
